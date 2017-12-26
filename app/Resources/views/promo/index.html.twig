@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+<div id="principal">
+	<div id="portada">
+			<img src="https://d17nbwpy4av6jl.cloudfront.net/uploads/brand/resources/resource5a25445b265b0_opel_4-anos-de-total-tranquilidad-con-tu-nuevo-opel-2-anos-de-extension-de-garantia-autoleben-gava.jpg" alt="Coche opel" />
+	</div>
+	<div id="formulario">
+		{{form_start(form)}}
+		{{form_widget(form)}}
+		{{form_end(form)}}
+
+		<p id="spinner"></p>
+	</div>
+</div>
+{% endblock%}
+
+{% block javascripts %}
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+	// Esta parte cambia el modelo del coche segun el tipo de coche elegido.
+	var tipo = $("#form_tipo");
+	var form = tipo.closest('form');
+
+	function cambio_tipo_coche() {
+		var data = tipo.serialize();
+		var form = tipo.closest('form');
+
+		$.ajax({
+		    url : form.attr('action'),
+		    type: form.attr('method'),
+		    data : data,
+		    success: function(html) {
+		        $('#form_vehiculo').replaceWith($(html).find('#form_vehiculo'));
+		    }
+		});
+	}
+	
+	tipo.on("change",cambio_tipo_coche);
+
+	// Esto es lo que realiza cuando hacemos submit.
+	form.on("submit",enviar);
+	function enviar() {
+		$('#form_enviar').hide();
+		$('#spinner').html('<img src="https://k37.kn3.net/taringa/6/5/6/5/2/9/9/eliaz_blaze/BE4.gif?8982" alt="Cargando" />');
+		form.submit();
+	}
+
+</script>
+{% endblock %}

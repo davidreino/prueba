@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Prueba DAPDA!{% endblock %}</title>
+        {% block stylesheets %} {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+        <style type="text/css">
+        
+        @media (min-width:320px) {
+            body {
+                font-size: 50px;
+            }
+
+            #principal {
+                width: 100%;
+                padding-left: 2%;
+                padding-right: 2%;
+            }
+            
+            #portada img {
+                width: 100%;
+            }
+            
+            input {
+                height: 80px;
+                width: 100%;
+                font-size: 50px;
+            }
+
+            select {
+                height: 80px!important;
+                width: 100%;
+                font-size: 50px!important;
+
+            }
+            label {
+                font-size: 50px;
+            }
+            button {
+                margin-top: 20px;
+                height: 80px;
+                width: 100%;
+                font-size: 50px!important;                
+            }
+
+        }
+
+        @media (min-width:768px) {
+            body {
+                font-size: 20px;
+            }
+
+            #principal {
+                width: 100%;
+                padding-left: 2%;
+                padding-right: 2%;
+            }
+                        
+            #portada img {
+                width: 100%;
+            }
+                        
+            input {
+                height: 40px;
+                width: 100%;
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            select {
+                height: 40px!important;
+                width: 100%;
+                font-size: 20px!important;
+                margin-bottom: 10px;
+            }
+            label {
+                font-size: 20px;
+            }
+            button {
+                margin-top: 20px;
+                height: 40px;
+                width: 100%;
+                font-size: 20px!important;                
+            }                  
+        }
+
+        </style>
+
+    </head>
+    <body>        
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
